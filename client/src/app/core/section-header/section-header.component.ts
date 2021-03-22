@@ -12,7 +12,7 @@ export class SectionHeaderComponent implements OnInit {
 
   constructor(private bsService: BreadcrumbService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.breadcrumb$ = this.bsService.breadcrumbs$;
   }
 
