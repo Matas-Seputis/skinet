@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./server-error.component.scss']
 })
 export class ServerErrorComponent implements OnInit {
-  error:any;
+  error: any;
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
     this.error = navigation && navigation.extras && navigation.extras.state && navigation.extras.state.error;
-   }
+  }
 
   ngOnInit() {
   }

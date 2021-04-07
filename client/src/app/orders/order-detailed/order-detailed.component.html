@@ -4,15 +4,18 @@
             <app-basket-summary
                 [items]="order.orderItems"
                 [isBasket]="false"
-                [isOrder]="true">
+                [isOrder]="true"
+            >
             </app-basket-summary>
         </div>
         <div class="col-4">
-            <app-order-totals
-            [shippingPrice]="order.shippingPrice"
-            [subtotal]="order.subtotal"
-            [total]="order.total">
-        </app-order-totals>
+                <app-order-totals
+                    [shippingPrice]="order.shippingPrice"
+                    [subtotal]="order.subtotal"
+                    [total]="order.total"
+                >
+                </app-order-totals
+                >
         </div>
     </div>
 </div>

@@ -32,7 +32,7 @@ namespace API
                     await identityContext.Database.MigrateAsync();
                     await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     var logger = loggerFactory.CreateLogger<Program>();
                     logger.LogError(ex, "An error occured during migration");

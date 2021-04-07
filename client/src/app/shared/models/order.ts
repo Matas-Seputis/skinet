@@ -4,7 +4,7 @@ export interface IOrderToCreate {
     basketId: string;
     deliveryMethodId: number;
     shipToAddress: IAddress;
-  }
+}
 
 export interface IOrder {
     id: number;
@@ -17,7 +17,7 @@ export interface IOrder {
     subtotal: number;
     total: number;
     status: string;
-  }
+}
 
 export interface IOrderItem {
     productId: number;
@@ -25,4 +25,4 @@ export interface IOrderItem {
     pictureUrl: string;
     price: number;
     quantity: number;
-  }
+}

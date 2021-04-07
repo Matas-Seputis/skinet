@@ -23,4 +23,4 @@ namespace API.Extensions
             return await input.Users.SingleOrDefaultAsync(x => x.Email == email);
         }
     }
-} 
+}

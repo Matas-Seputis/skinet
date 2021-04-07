@@ -25,10 +25,11 @@ namespace API.Controllers
         {
             var thing = _context.Products.Find(42);
 
-            if (thing == null)
+            if (thing == null) 
             {
                 return NotFound(new ApiResponse(404));
             }
+
             return Ok();
         }
 
@@ -38,6 +39,7 @@ namespace API.Controllers
             var thing = _context.Products.Find(42);
 
             var thingToReturn = thing.ToString();
+
             return Ok();
         }
 

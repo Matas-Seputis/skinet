@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
           }
           return this.accountService.checkEmailExists(control.value).pipe(
             map(res => {
-              return res ? {emailExists: true} : null;
+              return res ? { emailExists: true } : null;
             })
           );
         })

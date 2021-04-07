@@ -1,9 +1,10 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, delay } from 'rxjs/operators';
+import { Router, NavigationExtras } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -16,10 +17,9 @@ export class ErrorInterceptor implements HttpInterceptor {
                     if (error.status === 400) {
                         if (error.error.errors) {
                             throw error.error;
-                        }else {
+                        } else {
                             this.toastr.error(error.error.message, error.error.statusCode);
                         }
-                        this.toastr.error(error.error.message, error.error.statusCode);
                     }
                     if (error.status === 401) {
                         this.toastr.error(error.error.message, error.error.statusCode);

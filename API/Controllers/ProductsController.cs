@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Errors;
+using API.Helpers;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
@@ -14,17 +15,18 @@ namespace API.Controllers
     public class ProductsController : BaseApiController
     {
         private readonly IGenericRepository<Product> _productsRepo;
-        private readonly IGenericRepository<ProductType> _productTypeRepo;
+
         private readonly IGenericRepository<ProductBrand> _productBrandRepo;
+        private readonly IGenericRepository<ProductType> _productTypeRepo;
         private readonly IMapper _mapper;
 
-        public ProductsController(IGenericRepository<Product> productsRepo, IGenericRepository<ProductBrand> productBrandRepo,
-            IGenericRepository<ProductType> productTypeRepo, IMapper mapper)
+        public ProductsController(IGenericRepository<Product> productsRepo, IGenericRepository<ProductBrand> productBrandRepo, IGenericRepository<ProductType> productTypeRepo, IMapper mapper)
         {
             _mapper = mapper;
+            _productTypeRepo = productTypeRepo;
             _productBrandRepo = productBrandRepo;
             _productsRepo = productsRepo;
-            _productTypeRepo = productTypeRepo;
+
         }
 
         [HttpGet]
@@ -33,7 +35,7 @@ namespace API.Controllers
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(productParams);
 
-            var countSpec = new ProductWithFiltersForCountSpecifications(productParams);
+            var countSpec = new ProductWithFiltersForCountSpecificication(productParams);
 
             var totalItems = await _productsRepo.CountAsync(countSpec);
 

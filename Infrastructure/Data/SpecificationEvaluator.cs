@@ -13,7 +13,7 @@ namespace Infrastructure.Data
 
             if (spec.Criteria != null)
             {
-                query = query.Where(spec.Criteria); // p => p.ProductTypeOd == id (spec.Criteria could be replaced with this, for example)
+                query = query.Where(spec.Criteria);
             }
 
             if (spec.OrderBy != null)

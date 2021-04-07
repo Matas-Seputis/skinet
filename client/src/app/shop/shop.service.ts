@@ -8,12 +8,12 @@ import { ShopParams } from '../shared/models/shopParams';
 import { IProduct } from '../shared/models/product';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ShopService {
   baseUrl = 'https://localhost:5001/api/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getProducts(shopParams: ShopParams) {
     let params = new HttpParams();
@@ -32,15 +32,11 @@ export class ShopService {
 
     params = params.append('sort', shopParams.sort);
     params = params.append('pageIndex', shopParams.pageNumber.toString());
-    params = params.append('pageInfex', shopParams.pageSize.toString());
+    params = params.append('pageSize', shopParams.pageSize.toString());
 
-    return this.http
-      .get<IPagination>(this.baseUrl + 'products', {
-        observe: 'response',
-        params,
-      })
+    return this.http.get<IPagination>(this.baseUrl + 'products', { observe: 'response', params })
       .pipe(
-        map((response) => {
+        map(response => {
           return response.body;
         })
       );
